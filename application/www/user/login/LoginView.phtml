@@ -1,0 +1,33 @@
+<?php if(isset($errorMessage)) : ?>
+    <div class="notice">
+        <p><?= $errorMessage ?></p>
+    </div>
+<?php endif ?>
+
+<h2><i class="fa fa-lock"></i> Se connecter avec un compte utilisateur</h2>
+<form class="generic-form" action="<?= $requestUrl ?>/user/login" method="post">
+      <fieldset>
+        <legend>Informations d'authentification</legend>
+        <ul>
+            <li>
+                <label for="email">E-mail :</label>
+                <input type="text" id="email" name="email">
+                <?php if(isset($errors['email'])):  ?>
+                    <span class="error-message"><?= $errors['email'] ?></span>
+                <?php endif ?>
+            </li>
+            <li>
+                <label for="password">Mot de passe :</label>
+                <input type="password" id="password" name="password">
+                <?php if(isset($errors['password'])):  ?>
+                    <p class="error-message"><?= $errors['password'] ?></p>
+                <?php endif ?>
+            </li>
+            <li>
+                <p>Pour essayer avec un compte avec les privilèges administrateur : <strong>testresto</strong> (Email et Mot de passe)</p>
+            </li>
+        </ul>
+    </fieldset>
+    <input type="submit" class="button button-primary" value="Connexion"/>
+    <a href="<?= $requestUrl ?>" class="button button-cancel">Annuler</a>
+</form>
